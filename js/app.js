@@ -4,25 +4,19 @@ var app = new Vue({
        newCard: {
            name: '',
            qty: 1,
-           type: 'land',
+           type: 'Land',
            color: 'colorless'
        },
        filterOptions: {
-         color: "silver",
-         type: 'land'
-       },
-       colorFilter:{
-
-           backgroundColor: 'white',
-           color: 'black'
-
+         color: '',
+         type: ''
        },
        cardList: [
-           {name: 'Forest', qty: 20, type: 'land', color: 'silver'},
-           {name: 'Island', qty: 20, type: 'land', color: 'silver'},
-           {name: 'Mountain', qty: 20, type: 'land', color: 'silver'},
-           {name: 'Swamp', qty: 20, type: 'land', color: 'silver'},
-           {name: 'Plains', qty: 20, type: 'land', color: 'silver'},
+           {name: 'Forest', qty: 20, type: 'Land', color: 'silver'},
+           {name: 'Island', qty: 20, type: 'Land', color: 'silver'},
+           {name: 'Mountain', qty: 20, type: 'Land', color: 'silver'},
+           {name: 'Swamp', qty: 20, type: 'Land', color: 'silver'},
+           {name: 'Plains', qty: 20, type: 'Land', color: 'silver'},
 
            {name: 'Grizzly Bears', qty: 4, type: 'Creature', color: 'Green'},
            {name: 'Sun Titan', qty: 2, type: 'Creature', color: 'White'},
@@ -67,19 +61,41 @@ var app = new Vue({
     //    mtg-card-list: mgt-card-list
     // },
     methods: {
-       addItem: function(){
+       addCard: function(){
            this.cardList.push(this.newCard);
            this.newCard = {
                name: '',
                qty: 1,
-               type: 'land'
+               type: 'Land',
+               color: 'silver'
            };
            $('#addCardModal').modal('hide');
 
        },
         removeCard(card){
            this.cardList.splice(this.cardList.indexOf(card), 1);
-        }
+        },
+
+        // bgColor: function(card){
+        //    switch(card.color.toUpperCase())
+        //    {
+        //        case 'WHITE':
+        //            return 'white';
+        //        case 'BLUE':
+        //            return 'rgb(102, 119, 153)';
+        //        case 'BLACK':
+        //            return 'rgb(32, 32, 32)';
+        //        case 'GREEN':
+        //            return 'rgb(122, 148, 96)';
+        //        case 'RED':
+        //            return 'rgb(119, 31, 31)';
+        //        default:
+        //            return 'rgb(129, 149, 169)';
+        //
+        //    }
+        //
+        // }
+
 
 
     },
@@ -92,41 +108,6 @@ var app = new Vue({
             });
         },
 
-       redList: function(){
-           return this.cardList.filter(function(card){
-               return card.color.toUpperCase().includes('RED');
-           });
-       },
-        greenList: function(){
-           return this.cardList.filter(function(card){
-               return card.color.toUpperCase().includes('GREEN');
-           });
-       },
-        blueList: function(){
-           return this.cardList.filter(function(card){
-               return card.color.toUpperCase().includes('BLUE');
-           });
-       },
-        blackList: function(){
-           return this.cardList.filter(function(card){
-               return card.color.toUpperCase().includes('BLACK');
-           });
-       },
-        whiteList: function(){
-           return this.cardList.filter(function(card){
-               return card.color.toUpperCase().includes('WHITE');
-           });
-       },
-        colorlessList: function(){
-           return this.cardList.filter(function(card){
-               return card.color.toUpperCase() === 'silver';
-           });
-       },
-        landList: function(){
-           return this.cardList.filter(function(card){
-               return card.type.toUpperCase() === 'LAND';
-           });
-       }
 
     },
     mounted: function() {
