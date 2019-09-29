@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title>Card Collector - Home</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+<div id="app" class="container-fluid">
+    <div id="cardOptions" class="container-fluid">
+        <div>
+            <form id="filterForm" class="form-group">
+                <label for="selectColor" class="col-form-label">Select card color</label>
+                <select class="form-control" id="selectColor" v-model="filterOptions.color">
+                    <option value="">All</option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="silver" selected="selected">Colorless</option>
+                </select>
+                <label for="selectType" class="col-form-label">Select card type</label>
+                <select class="form-control" id="selectType" v-model="filterOptions.type">
+                    <option value="">All</option>
+                    <option value="Land" selected="selected">Land</option>
+                    <option value="Creature">Creature</option>
+                    <option value="Enchantment">Enchantment</option>
+                    <option value="Instant">Instant</option>
+                    <option value="Sorcery">Sorcery</option>
+                    <option value="Artifact">Artifact</option>
+                    <option value="Planeswalker">Planeswalker</option>
+                </select>
+                <button type="submit" class="btn btn-primary" @click.prevent="getCards">Show Cards</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+
+        <mtg-card-list id="cardListComponent" name="Cards" :cards="getCards" @remove-Card="removeCard"></mtg-card-list>
+
+    </div>
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js"></script>
+<script src="js/app-components.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
